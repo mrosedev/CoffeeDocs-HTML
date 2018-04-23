@@ -1,0 +1,288 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Troubleshooting Security" />
+<meta name="abstract" content="To monitor security access, you can set the java.security.debug system property, which determines what trace messages are printed during execution." />
+<meta name="description" content="To monitor security access, you can set the java.security.debug system property, which determines what trace messages are printed during execution." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-4F9F7BB5-5C9E-4888-9E28-3017EF746FA0" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Troubleshooting Security</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="Troubleshooting Security&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="permissions-jdk1.htm" title="Previous" type="text/html" />
+<link rel="next" href="java-cryptography-architecture-jca-reference-guide.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="permissions-jdk1.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="java-cryptography-architecture-jca-reference-guide.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-4F9F7BB5-5C9E-4888-9E28-3017EF746FA0" name="GUID-4F9F7BB5-5C9E-4888-9E28-3017EF746FA0"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-4F9F7BB5-5C9E-4888-9E28-3017EF746FA0" class="sect1">Troubleshooting Security</h1>
+<div><p>To monitor security access, you can set the <code class="codeph">java.security.debug</code> system property, which determines what trace messages are printed during execution.</p>
+<div class="section"><p>To see a list of all debugging options, use the <code class="codeph">help</code> setting:</p>
+<pre class="oac_no_warn" dir="ltr">java -Djava.security.debug=help
+</pre>
+<div class="p"><div class="infoboxnote" id="GUID-4F9F7BB5-5C9E-4888-9E28-3017EF746FA0__GUID-61F5D702-AA50-493C-B813-C0A0B595D39A"><p class="notep1">Note:</p><p>To use more than one option, separate options with a comma.</p>
+<p>JSSE also provides dynamic debug tracing support for SSL/TLS/DTLS troubleshooting. See <a href="java-secure-socket-extension-jsse-reference-guide.htm#GUID-31B7E142-B874-46E9-8DD0-4E18EC0EB2CF">Debugging Utilities</a>.</p>
+</div>
+</div>
+<p>The following table lists <code class="codeph">java.security.debug</code> options and links to further information about each option:</p>
+<div class="tblformal" id="GUID-4F9F7BB5-5C9E-4888-9E28-3017EF746FA0__GUID-90D4A85A-D027-4E85-929F-5A36BB96FA8D">
+<p class="titleintable">Table 1-10 <code class="codeph">java.security.debug</code> Options</p>
+<table cellpadding="4" cellspacing="0" class="Formal" title="java.security.debug Options" summary="Column 1 identifies the valid options for the property. Column 2 describes the option. Column 3 provides a link to additional information, if no more information is available, the column contains the word &#8220;None&#8221;." width="100%" frame="hsides" border="1" rules="rows"><thead><tr align="left" valign="top"><th align="left" valign="bottom" width="20%" id="d28720e47">Option</th>
+<th align="left" valign="bottom" width="40%" id="d28720e49">Description</th>
+<th align="left" valign="bottom" width="40%" id="d28720e51">Further Information</th>
+</tr>
+</thead>
+<tbody><tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e55" headers="d28720e47 "><code class="codeph">all</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e55 d28720e49 ">Turn on all the debugging options</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e55 d28720e51 ">&nbsp;None</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e63" headers="d28720e47 "><code class="codeph">access</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e63 d28720e49 "><p>Print all results from the <code class="codeph"><a href="https://docs.oracle.com/javase/10/docs/api/java/security/AccessController.html#checkPermission-java.security.Permission-" target="_blank"><code class="codeph">AccessController.checkPermission</code></a></code> method.</p>
+ <p>You can use the following options with the <code class="codeph">access</code> option:</p>
+ <ol><li><code class="codeph">stack</code>: Include stack trace</li>
+<li><code class="codeph">domain</code>: Dump all domains in context</li>
+<li><code class="codeph">failure</code>: Before throwing exception, dump stack and domain that do not have permission</li>
+</ol>
+ <p>You can use the following options with the <code class="codeph">stack</code> and <code class="codeph">domain</code> options:</p>
+ <ol><li><code class="codeph">permission=<span class="variable">&lt;classname&gt;</span></code>: Only dump output if specified permission is being checked</li>
+<li><code class="codeph">codebase=<span class="variable">&lt;URL&gt;</span></code>: Only dump output if specified codebase is being checked</li>
+</ol>
+ </td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e63 d28720e51 "><a href="permissions-jdk1.htm#GUID-1E8E213A-D7F2-49F1-A2F0-EFB3397A8C95" title="A permission represents access to a system resource. In order for a resource access to be allowed for an applet (or an application running with a security manager), the corresponding permission must be explicitly granted to the code attempting the access.">Permissions in the JDK</a> </td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e127" headers="d28720e47 "><code class="codeph">certpath</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e127 d28720e49 ">Turns on debugging for the PKIX <code class="codeph"><a href="https://docs.oracle.com/javase/10/docs/api/java/security/cert/CertPathValidator.html" target="_blank"><code class="codeph">CertPathValidator</code></a></code> and <code class="codeph"><a href="https://docs.oracle.com/javase/10/docs/api/java/security/cert/CertPathBuilder.html" target="_blank"><code class="codeph">CertPathBuilder</code></a></code> implementations. Use the <code class="codeph">ocsp</code> option with the <code class="codeph">certpath</code> option for OCSP protocol tracing. A hexadecimal dump of the OCSP request and response bytes is displayed.</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e127 d28720e51 "><a href="java-pki-programmers-guide.htm#GUID-D6A18B1E-A2A8-4CA2-BD18-514CD807810E" title="The Java Certification Path API defines interfaces and abstract classes for creating, building, and validating certification paths.&nbsp; Implementations may be plugged in using a provider-based interface.">PKI Programmers Guide Overview</a>       </td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e158" headers="d28720e47 "><code class="codeph">combiner</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e158 d28720e49 "><code class="codeph"><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/SubjectDomainCombiner.html" target="_blank"><code class="codeph">SubjectDomainCombiner</code></a></code> debugging</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e158 d28720e51 "><a href="permissions-jdk1.htm#GUID-1E8E213A-D7F2-49F1-A2F0-EFB3397A8C95" title="A permission represents access to a system resource. In order for a resource access to be allowed for an applet (or an application running with a security manager), the corresponding permission must be explicitly granted to the code attempting the access.">Permissions in the JDK</a> </td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e176" headers="d28720e47 "><code class="codeph">configfile</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e176 d28720e49 ">JAAS (Java Authentication and Authorization Service) configuration file loading</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e176 d28720e51 "><p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jaas/JAASRefGuide.html" target="_blank">Java Authentication and Authorization Service (JAAS) Reference Guide</a></p>
+<p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jgss/tutorials/ClientServer.html" target="_blank">Use of JAAS Login Utility and Java GSS-API for Secure Message Exchanges</a></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e191" headers="d28720e47 "><code class="codeph">configparser</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e191 d28720e49 ">JAAS configuration file parsing</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e191 d28720e51 "> <p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jaas/JAASRefGuide.html" target="_blank">Java Authentication and Authorization Service (JAAS) Reference Guide</a></p>
+<p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jgss/tutorials/ClientServer.html" target="_blank">Use of JAAS Login Utility and Java GSS-API for Secure Message Exchanges</a></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e207" headers="d28720e47 "><code class="codeph">gssloginconfig</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e207 d28720e49 ">Java GSS (Generic Security Services) login configuration file debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e207 d28720e51 "> <p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jgss/jgss-features.html" target="_blank">Java Generic Security Services: (Java GSS) and Kerberos</a></p>
+<p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jgss/tutorials/BasicClientServer.html" target="_blank">JAAS and Java GSS-API Tutorial</a></p>
+<p><code class="codeph"><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/login/Configuration.html" target="_blank"><code class="codeph">javax.security.auth.login.Configuration</code></a></code>: A Configuration object is responsible for specifying which <code class="codeph"><a href="https://docs.oracle.com/javase/10/docs/api/javax/net/ssl/SSLEngine.html" target="_blank"><code class="codeph">javax.net.ssl.SSLEngine</code></a></code> should be used for a particular application, and in what order the <code class="codeph">LoginModules</code> should be invoked.</p>
+<p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jgss/tutorials/LoginConfigFile.html" target="_blank">JAAS Login Configuration File</a></p>
+<p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jgss/lab/" target="_blank">Advanced Security Programming in Java SE Authentication, Secure Communication and Single Sign-On</a></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e247" headers="d28720e47 "><code class="codeph">jar</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e247 d28720e49 ">JAR file verification</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e247 d28720e51 "> <p><a href="https://docs.oracle.com/javase/tutorial/deployment/jar/verify.html" target="_blank"> Verifying Signed JAR Files</a> from The Java Tutorials</p>
+ </td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e261" headers="d28720e47 "><code class="codeph">jca</code><p></p>
+</td>
+<td align="left" valign="top" width="40%" headers="d28720e261 d28720e49 ">JCA engine class debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e261 d28720e51 "><p><a href="java-cryptography-architecture-jca-reference-guide.htm#GUID-A7EEDE25-C4C0-4C28-94EA-262858AE9212" title="An engine class provides the interface to a specific type of cryptographic service, independent of a particular cryptographic algorithm or provider.">Engine Classes and Algorithms</a></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e275" headers="d28720e47 "><code class="codeph">keystore</code> <p></p>
+</td>
+<td align="left" valign="top" width="40%" headers="d28720e275 d28720e49 ">Keystore debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e275 d28720e51 "><p><a href="java-cryptography-architecture-jca-reference-guide.htm#GUID-C730728A-DB4B-488F-8171-34FC04BD0FF1" title='A database called a "keystore" can be used to manage a repository of keys and certificates. Keystores are available to applications that need data for authentication, encryption, or signing purposes.'>Keystores</a></p>
+<p><a href="https://docs.oracle.com/javase/10/docs/api/java/security/KeyStore.html" target="_blank"><code class="codeph">KeyStore</code></a></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e295" headers="d28720e47 "><code class="codeph">logincontext</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e295 d28720e49 "><code class="codeph"><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/login/LoginContext.html" target="_blank"><code class="codeph">LoginContext</code></a></code> results</td>
+<td align="left" valign="top" width="40%" headers="d28720e295 d28720e51 "> <p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jaas/JAASRefGuide.html" target="_blank">Java Authentication and Authorization Service (JAAS) Reference Guide</a></p>
+<p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jgss/tutorials/ClientServer.html" target="_blank">Use of JAAS Login Utility and Java GSS-API for Secure Message Exchanges</a></p>
+ </td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e318" headers="d28720e47 "><code class="codeph">pkcs11</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e318 d28720e49 ">PKCS11 session manager debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e318 d28720e51 "><p><a href="pkcs11-reference-guide1.htm#GUID-30E98B63-4910-40A1-A6DD-663EAF466991">PKCS#11 Reference Guide</a></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e330" headers="d28720e47 "><code class="codeph">pkcs11keystore</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e330 d28720e49 ">PKCS11 KeyStore debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e330 d28720e51 "><p><a href="pkcs11-reference-guide1.htm#GUID-30E98B63-4910-40A1-A6DD-663EAF466991">PKCS#11 Reference Guide</a></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e342" headers="d28720e47 "><code class="codeph">pkcs12</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e342 d28720e49 ">PKCS12 KeyStore debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e342 d28720e51 ">None</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e350" headers="d28720e47 "><code class="codeph">policy</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e350 d28720e49 ">Loading and granting permissions with policy file</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e350 d28720e51 "> <p><a href="https://docs.oracle.com/javase/tutorial/security/tour2/step3.html" target="_blank">Set up the Policy File to Grant the Required Permissions (Controlling Applications)</a> from The Java Tutorials</p>
+<p><a href="permissions-jdk1.htm#GUID-789089CA-8557-4017-B8B0-6899AD3BA18D">Default Policy Implementation and Policy File Syntax</a></p>
+ </td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d28720e369" headers="d28720e47 "><code class="codeph">provider</code></td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e369 d28720e49 ">Security provider debugging<p>The following options can be used with the provider option:</p>
+<p><code class="codeph">engine=<span class="variable">&lt;engines&gt;</span></code> : The output is displayed only for a specified list of JCA engines.</p>
+<div class="p">The supported values for <span class="variable">&lt;engines&gt;</span> are:                   <ul style="list-style-type: disc;"><li><p>Cipher</p>
+</li>
+<li><p>KeyAgreement</p>
+</li>
+<li><p>KeyGenerator</p>
+</li>
+<li><p>KeyPairGenerator</p>
+</li>
+<li><p>KeyStore</p>
+</li>
+<li><p>Mac</p>
+</li>
+<li><p>MessageDigest</p>
+</li>
+<li><p>SecureRandom</p>
+</li>
+<li><p>Signature</p>
+</li>
+</ul>
+</div>
+</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d28720e369 d28720e51 "> <a href="java-cryptography-architecture-jca-reference-guide.htm#GUID-2BCFDD85-D533-4E6C-8CE9-29990DEB0190" title='The Java Cryptography Architecture (JCA) is a major piece of the platform, and contains a "provider" architecture and a set of APIs for digital signatures, message digests (hashes), certificates and certificate validation, encryption (symmetric/asymmetric block/stream ciphers), key generation and management, and secure random number generation, to name a few.'>Java Cryptography Architecture (JCA) Reference Guide</a> </td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e424" headers="d28720e47 "><code class="codeph">scl</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e424 d28720e49 ">Permissions that <a href="https://docs.oracle.com/javase/10/docs/api/java/security/SecureClassLoader.html" target="_blank"><code class="codeph">SecureClassLoader</code></a> assigns</td>
+<td align="left" valign="top" width="40%" headers="d28720e424 d28720e51 "><a href="permissions-jdk1.htm#GUID-1E8E213A-D7F2-49F1-A2F0-EFB3397A8C95" title="A permission represents access to a system resource. In order for a resource access to be allowed for an applet (or an application running with a security manager), the corresponding permission must be explicitly granted to the code attempting the access.">Permissions in the JDK</a></td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e441" headers="d28720e47 "><code class="codeph">securerandom</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e441 d28720e49 ">SecureRandom debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e441 d28720e51 "><a href="java-cryptography-architecture-jca-reference-guide.htm#GUID-AEB77CD8-D28F-4BBE-B9E5-160B5DC35D36">The SecureRandom Class</a></td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e450" headers="d28720e47 "><code class="codeph">sunpkcs11</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e450 d28720e49 ">SunPKCS11 provider debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e450 d28720e51 "><a href="pkcs11-reference-guide1.htm#GUID-30E98B63-4910-40A1-A6DD-663EAF466991">PKCS#11 Reference Guide</a></td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="20%" id="d28720e461" headers="d28720e47 "><code class="codeph">ts</code></td>
+<td align="left" valign="top" width="40%" headers="d28720e461 d28720e49 ">Timestamping debugging</td>
+<td align="left" valign="top" width="40%" headers="d28720e461 d28720e51 ">None</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<!-- class="inftblhruleinformal" -->
+</div>
+<!-- class="section" -->
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="permissions-jdk1.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="java-cryptography-architecture-jca-reference-guide.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>
