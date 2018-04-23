@@ -1,0 +1,342 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Sample Code Illustrating a Secure RMI Connection" />
+<meta name="abstract" content="" />
+<meta name="description" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Sample Code Illustrating a Secure RMI Connection</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="Sample Code Illustrating a Secure RMI Connection&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="sample-code-illustrating-https-connections.htm" title="Previous" type="text/html" />
+<link rel="next" href="sample-code-illustrating-use-sslengine.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="sample-code-illustrating-https-connections.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="sample-code-illustrating-use-sslengine.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87" name="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87" class="sect1">Sample Code Illustrating a Secure RMI Connection</h1>
+<div><p></p>
+<p>The example <a href="sample-code-illustrating-secure-rmi-connection.htm#GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__HELLOCLIENT.JAVA-3316D03B"><code>HelloClient.java</code></a> illustrates how to create a secure Java Remote Method Invocation (RMI) connection. The sample code is basically a "Hello World" example modified to install and use a custom RMI socket factory. It uses RMI over an SSL transport layer using JSSE. The server runs <a href="sample-code-illustrating-secure-rmi-connection.htm#GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__HELLOIMPL.JAVA-3316C983"><code>HelloImpl.java</code></a>, which sets up an internal RMI registry (rather than using the <code class="codeph">rmiregistry</code> command). The client runs <code class="codeph">HelloClient</code> and communicates over a secured connection.</p>
+<div class="section"><p class="subhead1">Usage</p><p>Setting up this sample can be a little tricky; here are the necessary steps:</p>
+<p><code class="codeph">% javac *.java </code></p>
+<p><code class="codeph">% rmic HelloImpl</code></p>
+<p><code class="codeph">% java -Djava.security.policy=policy HelloImpl</code> (run in another window)</p>
+<p><code class="codeph">% java HelloClient</code> (run in another window)</p>
+<p>For the server, the RMI security manager will be installed, and the supplied policy file grants permission to accept 	connections from any host. Obviously, giving all permissions should not be done in a production environment. You will need to give it the appropriate restrictive network privileges, such 	as:</p>
+<pre class="oac_no_warn" dir="ltr">permission java.net.SocketPermission "hostname:1024-", "accept,resolve";</pre>
+<p>In addition, this example can be easily updated to run with the standard SSL/TLS-based RMI socket factories. To do this, modify the <code>HelloImpl.java</code> file to use:</p>
+<pre class="oac_no_warn" dir="ltr">javax.rmi.ssl.SslRMIClientSocketFactory
+javax.rmi.ssl.SslRMIServerSocketFactory</pre>
+<p>instead of:</p>
+<pre class="oac_no_warn" dir="ltr">RMISSLClientSocketFactory
+RMISSLServerSocketFactory</pre>
+<p>These classes use <span class="apiname">SSLSocketFactory.getDefault()</span> and 	<span class="apiname">SSLServerSocketFactory.getDefault()</span>, so you will need to configure the system properly to locate your key and trust material.</p>
+<div class="infoboxnote" id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__GUID-8BB8F4A8-5DA0-4A0B-91B4-46AD32F2DC8C"><p class="notep1">Note:</p><p>If you use the standard SSL/TLS-based RMI socket factories, then you can specify the key stores with system properties:</p>
+<pre class="oac_no_warn" dir="ltr">-Djavax.net.ssl.keyStore=testkeys
+-Djavax.net.ssl.keyStorePassword=passphrase</pre>
+</div>
+</div>
+<!-- class="section" -->
+<div class="section" id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__HELLOCLIENT.JAVA-3316D03B"><p class="subhead1">HelloClient.java</p><pre class="oac_no_warn" dir="ltr">import java.net.InetAddress;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class HelloClient {
+
+    private static final int PORT = 2019;
+
+    public static void main(String args[]) {
+        try {
+            // Make reference to SSL-based registry
+            Registry registry = LocateRegistry.getRegistry(
+                InetAddress.getLocalHost().getHostName(), PORT,
+                new RMISSLClientSocketFactory());
+
+            // "obj" is the identifier that we'll use to refer
+            // to the remote object that implements the "Hello"
+            // interface
+            Hello obj = (Hello) registry.lookup("HelloServer");
+
+            String message = "blank";
+            message = obj.sayHello();
+            System.out.println(message+"\n");
+        } catch (Exception e) {
+            System.out.println("HelloClient exception: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}</pre>
+</div>
+<!-- class="section" -->
+<div class="section" id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__HELLO.JAVA-3316C72C"><p class="subhead1">Hello.java</p></div>
+<!-- class="section" -->
+<pre class="oac_no_warn" dir="ltr">import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface Hello extends Remote {
+    String sayHello() throws RemoteException;
+}</pre>
+<div class="section" id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__HELLOIMPL.JAVA-3316C983"><p class="subhead1">HelloImpl.java</p></div>
+<!-- class="section" -->
+<pre class="oac_no_warn" dir="ltr">import java.io.*;
+import java.net.InetAddress;
+import java.rmi.RemoteException;
+import java.rmi.RMISecurityManager;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+
+public class HelloImpl extends UnicastRemoteObject implements Hello {
+
+    private static final int PORT = 2019;
+
+    public HelloImpl() throws Exception {
+        super(PORT,
+              new RMISSLClientSocketFactory(),
+              new RMISSLServerSocketFactory());
+    }
+
+    public String sayHello() {
+        return "Hello World!";
+    }
+
+    public static void main(String args[]) {
+
+        // Create and install a security manager
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new RMISecurityManager());
+        }
+
+        try {
+            // Create SSL-based registry
+            Registry registry = LocateRegistry.createRegistry(PORT,
+                new RMISSLClientSocketFactory(),
+                new RMISSLServerSocketFactory());
+
+            HelloImpl obj = new HelloImpl();
+
+            // Bind this object instance to the name "HelloServer"
+            registry.bind("HelloServer", obj);
+
+            System.out.println("HelloServer bound in registry");
+        } catch (Exception e) {
+            System.out.println("HelloImpl err: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}</pre>
+<div class="section" id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__RMISSLCLIENTSOCKETFACTORY.JAVA-3316CC13"><p class="subhead1">RMISSLClientSocketFactory.java</p><pre class="oac_no_warn" dir="ltr">import java.io.*;
+import java.net.*;
+import java.rmi.server.*;
+import javax.net.ssl.*;
+
+public class RMISSLClientSocketFactory
+        implements RMIClientSocketFactory, Serializable {
+
+    public Socket createSocket(String host, int port) throws IOException {
+            SSLSocketFactory factory =
+                (SSLSocketFactory)SSLSocketFactory.getDefault();
+            SSLSocket socket = (SSLSocket)factory.createSocket(host, port);
+            return socket;
+    }
+
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        } else if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        return true;
+    }
+}</pre>
+</div>
+<!-- class="section" -->
+<div class="section" id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__RMISSLSERVERSOCKETFACTORY.JAVA-3316CE59"><p class="subhead1">RMISSLServerSocketFactory.java</p><pre class="oac_no_warn" dir="ltr">import java.io.*;
+import java.net.*;
+import java.rmi.server.*;
+import javax.net.ssl.*;
+import java.security.KeyStore;
+import javax.net.ssl.*;
+
+public class RMISSLServerSocketFactory implements RMIServerSocketFactory {
+
+    /*
+     * Create one SSLServerSocketFactory, so we can reuse sessions
+     * created by previous sessions of this SSLContext.
+     */
+    private SSLServerSocketFactory ssf = null;
+
+    public RMISSLServerSocketFactory() throws Exception {
+        try {
+            // set up key manager to do server authentication
+            SSLContext ctx;
+            KeyManagerFactory kmf;
+            KeyStore ks;
+
+            char[] passphrase = "passphrase".toCharArray();
+            ks = KeyStore.getInstance("JKS");
+            ks.load(new FileInputStream("testkeys"), passphrase);
+
+            kmf = KeyManagerFactory.getInstance("SunX509");
+            kmf.init(ks, passphrase);
+
+            ctx = SSLContext.getInstance("TLS");
+            ctx.init(kmf.getKeyManagers(), null, null);
+
+            ssf = ctx.getServerSocketFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public ServerSocket createServerSocket(int port) throws IOException {
+            return ssf.createServerSocket(port);
+    }
+
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        } else if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        return true;
+    }
+}</pre>
+</div>
+<!-- class="section" -->
+<div class="section" id="GUID-2F82CCFD-22E6-4E6E-A2E1-88CF2BB19E87__POLICY-3316D1F1"><p class="subhead1">policy</p><pre class="oac_no_warn" dir="ltr">// In this example, for simplicity, we will use a policy file that
+// gives global permission to anyone from anywhere. Do not use this
+// policy file in a production environment.
+
+grant {
+	permission java.net.SocketPermission "*", "accept,resolve";
+};
+
+</pre>
+</div>
+<!-- class="section" -->
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="sample-code-illustrating-https-connections.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="sample-code-illustrating-use-sslengine.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>

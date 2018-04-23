@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Part I : Secure Authentication using the Java Authentication and Authorization Service (JAAS)" />
+<meta name="abstract" content="" />
+<meta name="description" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-42416198-9AEE-428C-80EF-2A56488B5890" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Part I : Secure Authentication using the Java Authentication and Authorization Service (JAAS)</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="Part I : Secure Authentication using the Java Authentication and Authorization Service (JAAS)&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="advanced-security-programming-java-se-authentication-secure-communication-and-single-sign1.htm" title="Previous" type="text/html" />
+<link rel="next" href="part-ii-secure-communications-using-java-se-security-api.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="advanced-security-programming-java-se-authentication-secure-communication-and-single-sign1.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="part-ii-secure-communications-using-java-se-security-api.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-42416198-9AEE-428C-80EF-2A56488B5890" name="GUID-42416198-9AEE-428C-80EF-2A56488B5890"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-42416198-9AEE-428C-80EF-2A56488B5890" class="sect1">Part I : Secure Authentication using the Java Authentication and Authorization Service (JAAS)</h1>
+<div><p></p>
+</div>
+<div class="sect2"><a id="GUID-1446370E-5019-4BD1-860A-22BAC1F13CF8" name="GUID-1446370E-5019-4BD1-860A-22BAC1F13CF8"></a><h2 id="JSSEC-GUID-1446370E-5019-4BD1-860A-22BAC1F13CF8" class="sect2">Exercise 1: Using the JAAS API</h2>
+<div><p></p>
+<div class="section"><p class="subhead2">Goal of This Exercise</p><p>The goal of this exercise is to learn how to use the Java Authentication and Authorization (JAAS) API to perform authentication.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Background for This Exercise</p><p>JAAS provides a standard pluggable authentication framework (PAM) for the Java platform. &nbsp;An application uses the JAAS API to perform <span class="italic">authentication</span> - the process of verifying the identity of the user who is using the application and gathering his identity information into a container called a <span class="italic">subject</span>. The application can then use the identity information in the subject along with the JAAS API to make <span class="italic">authorization</span> decisions, to decide whether the authenticated user is allowed to access protected resources or perform restricted actions. This exercise demonstrates JAAS Authentication. It does not demonstrate JAAS Authorization.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Resources for This Exercise</p><ul style="list-style-type: disc;"><li><a href="java-authentication-and-authorization-service-jaas-reference-guide.htm#GUID-2A935F5E-0803-411D-B6BC-F8C64D01A25C">Java Authentication and Authorization Service (JAAS) Reference Guide</a></li>
+<li><a href="jaas-tutorials.htm#GUID-272DB20A-B590-4B2E-BD60-7EF9EB54AB5A">JAAS Tutorials</a></li>
+<li>JAAS Javadoc API documentation<ul style="list-style-type: disc;"><li><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/package-summary.html" target="_blank"><span class="apiname">javax.security.auth</span></a></li>
+<li><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/callback/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.callback</span></a></li>
+<li><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/kerberos/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.kerberos</span></a></li>
+<li><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/login/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.login</span></a></li>
+<li><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/spi/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.spi</span></a></li>
+<li><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/x500/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.x500</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Steps to Follow</p><ul style="list-style-type: disc;"><li><p>Read the <a href="source-code-advanced-security-programming-java-se-authentication-secure-communication-and-single-sig.htm#GUID-40AF52E5-ECEA-4E5F-B0C1-35C150C7BB6E__JASS.JAVA-338B5916"><code>Jass.java</code></a> sample code. The code performs the following tasks:</p>
+<ol><li>Define a callback handler or use a predefined one.</li>
+<li>Create a <span class="apiname">LoginContext</span> with a name that identifies which JAAS configuration entry to use.</li>
+<li>Perform the authentication.</li>
+<li>Define the task that the authenticated user is to perform.</li>
+<li>Perform the action as the authenticated user.</li>
+<li>Log out.</li>
+</ol>
+<p><span class="apiname">Subject.doAs</span> will run the code defined in <code class="codeph">MyAction</code> as the authenticated user [lines 14-15]. This serves two purposes. First, code in <code class="codeph">MyAction</code> that requires identity information for authentication to a service could get it from the subject. This exercise demonstrates this use. Second, if <code class="codeph">MyAction</code> accesses any protected resources/operations, the identity information in the current subject would be used to make the corresponding access control decision. This second aspect is not covered in this exercise.</p>
+</li>
+<li><p>Make sure that the <code class="codeph">%JAVA_HOME%/bin</code> is in the PATH environment variable.</p>
+</li>
+<li><p>Compile the modified sample code. You will run this code in subsequent exercises after doing some set up. That ends this exercise.</p>
+</li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Summary</p><p>This exercise introduced the main classes of the JAAS APIs: <span class="apiname">LoginContext</span> and <span class="apiname">Subject</span>. You learned how to use <span class="apiname">LoginContext</span> to authenticate a user and collect its identity information in a Subject. You then learned how to use the Subject to perform an action as the authenticated user.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Next Steps</p><p>Proceed to <a href="part-i-secure-authentication-using-java-authentication-and-authorization-service-jaas.htm#GUID-2079DC72-5A2E-46FE-978F-42D113FFA41A">Exercise 2: Configuring JAAS for Kerberos Authentication</a> to learn how to configure the sample application to use Kerberos for authentication.</p>
+</div>
+<!-- class="section" -->
+</div>
+</div>
+<div class="sect2"><a id="GUID-2079DC72-5A2E-46FE-978F-42D113FFA41A" name="GUID-2079DC72-5A2E-46FE-978F-42D113FFA41A"></a><h2 id="JSSEC-GUID-2079DC72-5A2E-46FE-978F-42D113FFA41A" class="sect2">Exercise 2: Configuring JAAS for Kerberos Authentication</h2>
+<div><p></p>
+<div class="section"><p class="subhead2">Goal of This Exercise</p><p>The goal of this exercise is to learn how to configure a JAAS application to use Kerberos for authentication.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Kerberos Background for This Exercise</p><p>Kerberos is an Internet standard protocol for trusted-third party authentication defined in <a href="http://www.ietf.org/rfc/rfc4120.txt" target="_blank">RFC 4120</a>. It is available on most modern computing platforms today, including Solaris, Windows, and Linux.</p>
+<p>The Kerberos architecture is centered around a trusted authentication service called the key distribution center, or KDC. Users and services in a Kerberos environment are referred to as principals; each principal shares a secret (such as a password) with the KDC. A principal &nbsp;authenticates to Kerberos by proving to the KDC that it knows the shared secret. If the authentication is successful, the KDC issues a ticket-granting-ticket (TGT) to the principal. When the principal subsequently wants to authenticate to a service on the network, such as a directory service or a file service, (thereby, acting as a "client" of the service), it gives the TGT to the KDC to obtain a service ticket to communicate with the service. Not only does the service ticket indicate the identities of the client and service principals, it also contains a session key that can be used by the client and service to subsequently establish secure communication. To authenticate to the service, the client sends the service ticket to the service. When the service receives the ticket, it decodes it using the secret it shares with the KDC.</p>
+<p>In this architecture, a principal only authenticates directly (once) to the KDC. It authenticates indirectly to all other services via the use of service tickets. Service tickets are how the KDC vouches for the identity of a principal. The ability of a principal to access multiple secure services by performing explicit authentication only once is called single sign-on.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">JAAS Background for This exercise</p><p>In JAAS, for a client principal, "logging into Kerberos" means acquiring the TGT and placing it in the Subject, so that it can be used for authentication with services that the client will access. For a service principal, "logging into Kerberos" means obtaining the secret keys that the service needs to decode incoming client authentication requests.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Resources for This Exercise</p><ul style="list-style-type: disc;"><li><a href="java-authentication-and-authorization-service-jaas-loginmodule-developers-guide1.htm#GUID-CB46C30D-FFF1-466F-B2F5-6DE0BD5DA43A">Java Authentication and Authorization Service (JAAS): LoginModule Developer's Guide</a></li>
+<li><a href="http://www.ietf.org/rfc/rfc4120.txt" target="_blank">The Kerberos Network Authentication Service (v5)</a></li>
+<li><a href="appendix-b-jaas-login-configuration-file.htm#GUID-7EB80FA5-3C16-4016-AED6-0FC619F86F8E">Appendix B: JAAS Login Configuration File</a></li>
+<li>Login module package Javadoc API documentation:<a href="https://docs.oracle.com/javase/10/docs/api/com/sun/security/auth/module/package-summary.html" target="_blank"><span class="apiname">com.sun.security.auth.module</span></a></li>
+<li><a href="introduction-jaas-and-java-gss-api-tutorials1.htm">Introduction to JAAS and Java GSS-API Tutorials</a></li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Steps to Follow</p><ol><li><p>Examine the <a href="source-code-advanced-security-programming-java-se-authentication-secure-communication-and-single-sig.htm#GUID-40AF52E5-ECEA-4E5F-B0C1-35C150C7BB6E__JASS-KRB5.CONF-338B5E8A"><span class="apiname">jaas-krb5.conf</span></a> configuration file.</p>
+<p>This file contains two entries, one named <span class="italic">client</span> and one named <span class="italic">server</span>. The client entry indicates that the <span class="apiname">LoginContext</span> must use the <span class="bold"><span class="apiname">com.sun.security.auth.module.Krb5LoginModule</span></span>. The server entry indicates that the <span class="apiname">LoginContext</span> must use the same login module, and use keys from the <code>sample.keytab</code> file for the principal host/machineName.</p>
+</li>
+<li><p>Determine the hostname of your machine by executing the hostname command.</p>
+</li>
+<li><p>Edit this file and change the entry for server principal to use the name of your machine. For example, if your machine name is j1hol-001, this line in the configuration file should look like this:</p>
+<pre class="oac_no_warn" dir="ltr">principal="host/j1hol-001"</pre>
+</li>
+<li><p>Perform client authentication by typing the following command:</p>
+<pre class="oac_no_warn" dir="ltr">% java -Djava.security.auth.login.config=jaas-krb5.conf Jaas client</pre>
+<p>You will be prompted for a password. You should see the following output. Replace <span class="italic">password</span> with a password that is secure.</p>
+<pre class="oac_no_warn" dir="ltr">Kerberos password for test: password
+Authenticated principal: [test@J1LABS.EXAMPLE.COM]
+Performing secure action...</pre>
+</li>
+<li><p>Perform server authentication by typing the following command:</p>
+<pre class="oac_no_warn" dir="ltr">% java -Djava.security.auth.login.config=jaas-krb5.conf Jaas server</pre>
+<p>You should see the following output:</p>
+<pre class="oac_no_warn" dir="ltr">Authenticated principal: [host/j1hol-001@J1LABS.EXAMPLE.COM] Performing secure action...</pre>
+</li>
+</ol>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Summary</p><p>In this exercise, you learned how to configure a JAAS application to use a Kerberos login module, both as a client principal who enters his/her username/password interactively, and as a service principal who gets its keys from a <code>keytab</code> file.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead2">Next Steps</p><p>Proceed to <a href="part-ii-secure-communications-using-java-se-security-api.htm#GUID-98B02DB0-13DB-4175-9485-3449E1A241B5">Part II : Secure Communications using the Java SE Security API</a> to learn how to establish secure communication channels using Java security APIs.</p>
+</div>
+<!-- class="section" -->
+</div>
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="advanced-security-programming-java-se-authentication-secure-communication-and-single-sign1.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="part-ii-secure-communications-using-java-se-security-api.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>

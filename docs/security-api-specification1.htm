@@ -1,0 +1,209 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Security API Specification" />
+<meta name="abstract" content="" />
+<meta name="description" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-55A8179F-96DF-4DDE-A28B-DBE52302324B" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Security API Specification</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="13 Security API Specification&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="java-xml-digital-signature-api-overview-and-tutorial.htm" title="Previous" type="text/html" />
+<link rel="next" href="deprecated-security-apis-marked-removal.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="java-xml-digital-signature-api-overview-and-tutorial.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="deprecated-security-apis-marked-removal.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-55A8179F-96DF-4DDE-A28B-DBE52302324B" name="GUID-55A8179F-96DF-4DDE-A28B-DBE52302324B"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-55A8179F-96DF-4DDE-A28B-DBE52302324B" class="sect1"><span class="enumeration_chapter">13 </span>Security API Specification</h1>
+<div><p></p>
+<div class="section"><p class="subhead1">General Security</p>  <ul style="list-style-type: disc;"><li><p> <a href="https://docs.oracle.com/javase/10/docs/api/java/security/package-summary.html" target="_blank"><span class="apiname">java.security</span></a> </p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/crypto/package-summary.html" target="_blank"><span class="apiname">javax.crypto</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/cert/package-summary.html" target="_blank"><span class="apiname">javax.security.cert</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/crypto/spec/package-summary.html" target="_blank"><span class="apiname">javax.crypto.spec</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/java/security/spec/package-summary.html" target="_blank"><span class="apiname">java.security.spec</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/java/security/interfaces/package-summary.html" target="_blank"><span class="apiname">java.security.interfaces</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/crypto/interfaces/package-summary.html" target="_blank"><span class="apiname">javax.crypto.interfaces</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/rmi/ssl/package-summary.html" target="_blank"><span class="apiname">javax.rmi.ssl</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/jdk/security/jarsigner/package-summary.html" target="_blank"><span class="apiname">jdk.security.jarsigner</span></a></p>
+</li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">Certification Path</p><a href="https://docs.oracle.com/javase/10/docs/api/java/security/cert/package-summary.html" target="_blank"><span class="apiname">java.security.cert</span></a></div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">JAAS</p><ul style="list-style-type: disc;"><li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/package-summary.html" target="_blank"><span class="apiname">javax.security.auth</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/callback/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.callback</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/kerberos/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.kerberos</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/login/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.login</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/spi/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.spi</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/auth/x500/package-summary.html" target="_blank"><span class="apiname">javax.security.auth.x500</span></a></p>
+</li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">Java GSS-API</p><ul style="list-style-type: disc;"><li><p><a href="https://docs.oracle.com/javase/10/docs/api/org/ietf/jgss/package-summary.html" target="_blank"><span class="apiname">org.ietf.jgss</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/com/sun/security/jgss/package-summary.html" target="_blank"><span class="apiname">com.sun.security.jgss</span></a></p>
+</li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">JSSE</p><ul style="list-style-type: disc;"><li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/net/package-summary.html" target="_blank"><span class="apiname">javax.net</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/net/ssl/package-summary.html" target="_blank"><span class="apiname">javax.net.ssl</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/java/security/cert/package-summary.html" target="_blank"><span class="apiname">java.security.cert</span></a></p>
+</li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">Java SASL</p><a href="https://docs.oracle.com/javase/10/docs/api/javax/security/sasl/package-summary.html" target="_blank"><span class="apiname">javax.security.sasl</span></a></div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">SSL/TLS-Based RMI Socket Factories</p><a href="https://docs.oracle.com/javase/10/docs/api/javax/rmi/ssl/package-summary.html" target="_blank"><span class="apiname">javax.rmi.ssl</span></a></div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">XML Digital Signature</p><ul style="list-style-type: disc;"><li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/xml/crypto/package-summary.html" target="_blank"><span class="apiname">javax.xml.crypto</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/xml/crypto/dom/package-summary.html" target="_blank"><span class="apiname">javax.xml.crypto.dom</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/xml/crypto/dsig/package-summary.html" target="_blank"><span class="apiname">javax.xml.crypto.dsig</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/xml/crypto/dsig/dom/package-summary.html" target="_blank"><span class="apiname">javax.xml.crypto.dsig.dom</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/xml/crypto/dsig/keyinfo/package-summary.html" target="_blank"><span class="apiname">javax.xml.crypto.dsig.keyinfo</span></a></p>
+</li>
+<li><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/xml/crypto/dsig/spec/package-summary.html" target="_blank"><span class="apiname">javax.xml.crypto.dsig.spec</span></a></p>
+</li>
+</ul>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">Smart Card I/O</p><p><a href="https://docs.oracle.com/javase/10/docs/api/javax/smartcardio/package-summary.html" target="_blank"><span class="apiname">javax.smartcardio</span></a></p>
+</div>
+<!-- class="section" -->
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="java-xml-digital-signature-api-overview-and-tutorial.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="deprecated-security-apis-marked-removal.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>

@@ -1,0 +1,246 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="The Kerberos 5 GSS-API Mechanism" />
+<meta name="abstract" content="This section describes and lists security features regarding Java Generic Security Services (Java GSS) for Kerberos 5. It also describes the Object Identifier (OID) for the Kerberos V5 mechanism, the encryption types, and the krb5.conf settings supported by Java GSS." />
+<meta name="description" content="This section describes and lists security features regarding Java Generic Security Services (Java GSS) for Kerberos 5. It also describes the Object Identifier (OID) for the Kerberos V5 mechanism, the encryption types, and the krb5.conf settings supported by Java GSS." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-23D30A4B-CC38-45ED-83D5-C59ABB72762E" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>The Kerberos 5 GSS-API Mechanism</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="The Kerberos 5 GSS-API Mechanism&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="appendix-setting-kerberos-accounts.htm" title="Previous" type="text/html" />
+<link rel="next" href="java-secure-socket-extension-jsse-reference-guide.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="appendix-setting-kerberos-accounts.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="java-secure-socket-extension-jsse-reference-guide.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-23D30A4B-CC38-45ED-83D5-C59ABB72762E" name="GUID-23D30A4B-CC38-45ED-83D5-C59ABB72762E"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-23D30A4B-CC38-45ED-83D5-C59ABB72762E" class="sect1">The Kerberos 5 GSS-API Mechanism</h1>
+<div><p>This section describes and lists security features regarding Java Generic Security Services (Java GSS) for Kerberos 5. It also describes the Object Identifier (OID) for the Kerberos V5 mechanism, the encryption types, and the <code class="codeph">krb5.conf</code> settings supported by Java GSS.</p>
+<div class="section"><p>The Generic Security Services Application Program Interface (GSS-API) mechanism is defined by <a href="http://tools.ietf.org/html/rfc1964" target="_blank">RFC 1964</a> and supplemented with <a href="http://tools.ietf.org/html/rfc4121" target="_blank">RFC 4121</a> under the Internet Standards process.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">The OID for the Kerberos V5 Mechanism</p><p>According to RFC 1964 section 1, the OID for Java Generic Security Services (Java GSS) for Kerberos 5 is defined as 1.2.840.113554.1.2.2; see also <a href="https://docs.oracle.com/javase/10/docs/specs/security/standard-names.html#gssapi-mechanisms" target="_blank">GSSAPI Mechanisms</a> in <cite>Java Security Standard Algorithm Names</cite>.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">Java GSS/Kerberos Supported Encryption Types</p><p>The following table lists the preferred order of Java GSS/Kerberos supported encryption types.</p>
+<div class="tblformal" id="GUID-23D30A4B-CC38-45ED-83D5-C59ABB72762E__GUID-32156CE3-DB74-499F-BC7D-BC765B0D851D">
+<p class="titleintable">Table 7-1      Java GSS/Kerberos Supported Encryption Types</p>
+<table cellpadding="4" cellspacing="0" class="Formal" title="     Java GSS/Kerberos Supported Encryption Types" summary="Preferred order of Java GSS/Kerberos supported encryption types" width="100%" frame="hsides" border="1" rules="rows"><thead><tr align="left" valign="top"><th rowspan="1" colspan="1" align="left" valign="bottom" id="d107711e48">Name</th>
+<th rowspan="1" colspan="1" align="left" valign="bottom" id="d107711e50">etype Number</th>
+</tr>
+</thead>
+<tbody><tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d107711e54" headers="d107711e48 ">aes256-cts</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d107711e54 d107711e50 ">18</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d107711e59" headers="d107711e48 ">aes128-cts</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d107711e59 d107711e50 ">17</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d107711e64" headers="d107711e48 ">rc4-hmac</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d107711e64 d107711e50 ">23</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d107711e69" headers="d107711e48 ">des3-cbc-sha1</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d107711e69 d107711e50 ">16</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d107711e74" headers="d107711e48 ">des-cbc-md5</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d107711e74 d107711e50 ">3</td>
+</tr>
+<tr align="left" valign="top"><td rowspan="1" colspan="1" align="left" valign="top" id="d107711e79" headers="d107711e48 ">des-cbc-crc</td>
+<td rowspan="1" colspan="1" align="left" valign="top" headers="d107711e79 d107711e50 ">1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<!-- class="inftblhruleinformal" -->
+<div class="infoboxnote" id="GUID-23D30A4B-CC38-45ED-83D5-C59ABB72762E__GUID-DB77CB65-36AB-4098-AD4A-3E4D99F886CF"><p class="notep1">Note:</p>The AES-256 encryption type is enabled by default. The DES-based encryption types, including <code class="codeph">des-cbc-crc</code> and <code class="codeph">dec-cbc-md5</code>, are disabled by default.</div>
+</div>
+<!-- class="section" -->
+<div class="section"><p>A user can restrict the usage of encryption for various purposes in <code class="codeph">krb5.conf</code>, in the <code class="codeph">[libdefaults]</code> section.</p>
+</div>
+<!-- class="section" -->
+<div class="section"><p class="subhead1">Supported krb5.conf Settings</p><p>The following parameters are supported:</p>
+<pre class="oac_no_warn" dir="ltr">include FILENAME
+includedir DIRNAME
+
+[libdefaults]
+default_realm
+allow_weak_crypto
+ 
+dns_lookup_kdc
+dns_lookup_realm
+dns_fallback
+ 
+default_checksum
+safe_checksum_type
+ap_req_checksum_type
+default_keytab_name
+ 
+default_tkt_enctypes
+permitted_enctypes
+default_tgs_enctypes
+ 
+no_addresses
+noaddresses
+ 
+renewable
+proxiable
+forwardable
+ 
+kdc_default_options
+clockskew
+ 
+kdc_timeout
+udp_preference_limit
+
+max_retries
+renew_lifetime
+ticket_lifetime
+ 
+[realms]
+  REALM.NAME = {
+      kdc
+      kdc_timeout
+      udp_preference_limit
+      max_retries
+  }
+ 
+[capaths]
+  A = {
+    I = .
+    B = I
+  }
+ 
+[domain_realm]
+  domain=REALM
+</pre>
+<p>The following are the defaults for the <code class="codeph">krb5.conf</code> file parameters:</p>
+<pre class="oac_no_warn" dir="ltr">no_addresses = true
+noaddresses = true
+dns_lookup_kdc = true 
+dns_lookup_realm = false
+allow_weak_crypto = false
+kdc_timeout = 30s
+max_retries = 3
+udp_preference_limit = 1465
+clockskew = 300
+renewable = false
+proxiable = false
+forwardable = false
+</pre>
+</div>
+<!-- class="section" -->
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="appendix-setting-kerberos-accounts.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="java-secure-socket-extension-jsse-reference-guide.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>

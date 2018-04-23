@@ -1,0 +1,165 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Sample Truststores" />
+<meta name="abstract" content="" />
+<meta name="description" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-51A0A134-F222-4B69-ACCA-C5542AA7D9C8" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Sample Truststores</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="Sample Truststores&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="running-jsse-sample-code1.htm" title="Previous" type="text/html" />
+<link rel="next" href="sample-code-illustrating-secure-socket-connection-client-and-server.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="running-jsse-sample-code1.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-51A0A134-F222-4B69-ACCA-C5542AA7D9C8" name="GUID-51A0A134-F222-4B69-ACCA-C5542AA7D9C8"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-51A0A134-F222-4B69-ACCA-C5542AA7D9C8" class="sect1">Sample Truststores</h1>
+<div><p></p>
+<p>This bundle includes sample keystore files that are used with the sample code. They are stored in the "JKS" keystore format, which is the default format used by Oracle' JDK implementation. (If another keystore format is desired, the JDK will need to be configured to recognize the new default format.)</p>
+<p>JSSE uses the following certificate keystore files to authenticate the clients and servers.</p>
+<ul style="list-style-type: disc;"><li><p><code>*/testkeys</code></p>
+<p>These files are used by the code samples as the source of public/private key and certificate material. In the client program directories, the <code>testkeys</code> files contains the certificate entry for the Java mascot <code class="codeph">Duke</code>. In the server program directories (<code>./sockets/server</code> and <code>rmi</code>), the file contains a certificate entry for the 		server <code class="codeph">localhost</code>.</p>
+<p>The sample code expects the <code>testkeys</code> file to be in the current working directory.</p>
+<div class="infoboxnote" id="GUID-51A0A134-F222-4B69-ACCA-C5542AA7D9C8__GUID-690DA2D7-55E0-4BC4-90FF-28477E283A1A"><p class="notep1">Note:</p><p>These are very simple certificates and are not appropriate for a production environment, but they should be sufficient for running the samples here.</p>
+<p>The password for these keystores is: <code class="codeph">passphrase</code></p>
+</div>
+</li>
+<li><p><code>samplecacerts</code></p>
+<p>This truststore file is very similar to the stock JDK <code>cacerts</code> file, in that it contains trust certificates from several vendors. It also contains the trusted certificates from <span class="apiname">Duke</span> and <span class="apiname">localhost</span> above.</p>
+<p>The password for this keystore is the same as the JDK <code>cacert</code>'s initial password: <code class="codeph">changeit</code></p>
+<p>Please see your provider's documentation for how to configure the location of your trusted certificate file.</p>
+<div class="infoboxnote" id="GUID-51A0A134-F222-4B69-ACCA-C5542AA7D9C8__GUID-7609AE78-4064-408A-AE25-DEACF27E7B1A"><p class="notep1">Note:</p><p>Users of the JDK can specify the location of the truststore by using one of the following methods:</p>
+</div>
+ <ol><li><p>System properties:</p>
+<pre class="oac_no_warn" dir="ltr">java -Djavax.net.ssl.trustStore=samplecacerts \
+     -Djavax.net.ssl.trustStorePassword=changeit Application</pre>
+</li>
+<li><p>Install the file into:</p>
+<pre class="oac_no_warn" dir="ltr"><span class="variable">&lt;java-home&gt;</span>/lib/security/jssecacerts</pre>
+</li>
+<li><p>Install the file into:</p>
+<pre class="oac_no_warn" dir="ltr"><span class="variable">&lt;java-home&gt;</span>/lib/security/cacerts</pre>
+</li>
+</ol>
+<p> If you choose (2) or (3), be sure to replace this file with a production <code>cacerts</code> file before deployment.</p>
+</li>
+</ul>
+<p>The utility <code class="codeph">keytool</code> can be used to generate alternate certificates and keystore files.</p>
+<div class="infoboxnote" id="GUID-51A0A134-F222-4B69-ACCA-C5542AA7D9C8__GUID-CBA42D99-0211-4BB8-9854-EC0115A00153"><p class="notep1">Note:</p><p>Ensure that you verify your <code>cacerts</code> file. Since you trust the CAs in the <code>cacerts</code> file as entities for signing and issuing certificates to other entities, you must manage the <code>cacerts</code> file carefully.  The <code>cacerts</code> file should contain only certificates of the entities and CAs you trust.  It is your responsibility to verify the trusted root CA certificates bundled in the <code>cacerts</code> file and make your own trust decisions. To remove an untrusted CA certificate from the <code>cacerts</code> file, use the delete option of the <code class="codeph">keytool</code> command. You can find the <code>cacerts</code> file in the jre installation directory. Contact your system administrator if you do not have permission to edit this file.</p>
+</div>
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="running-jsse-sample-code1.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>

@@ -1,0 +1,191 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Kerberos Requirements" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-EAA2758B-3071-4CDA-AEF1-D76F5271E998" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Kerberos Requirements</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="Kerberos Requirements&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="more-things-you-can-do-java-gss-api-and-jaas.htm" title="Previous" type="text/html" />
+<link rel="next" href="troubleshooting.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="more-things-you-can-do-java-gss-api-and-jaas.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="troubleshooting.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-EAA2758B-3071-4CDA-AEF1-D76F5271E998" name="GUID-EAA2758B-3071-4CDA-AEF1-D76F5271E998"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-EAA2758B-3071-4CDA-AEF1-D76F5271E998" class="sect1">Kerberos Requirements</h1>
+<div><p>Kerberos Version 5 is used for both the authentication and secure communication aspects of the client and server applications developed in this tutorial. The reader is assumed to already be familiar with Kerberos. See the <a href="http://web.MIT.edu/kerberos/www/index.html" target="_blank">Kerberos reference documentation</a>.</p>
+<p>The JAAS framework, and the Kerberos mechanism required by the Java GSS-API methods, are built into JDKs from all vendors. The Kerberos LoginModule required for the JAAS authentication in this tutorial may not be available in all vendors' JDKs. We will be using the LoginModule for Kerberos provided by Oracle's JDK.</p>
+<p>In order to run the sample programs, you will need access to a Kerberos installation. As described in the following sections, you may also need a <code class="codeph">krb5.conf</code> Kerberos configuration file and an indication as to where that file is located.</p>
+<p>As with all Kerberos installations, a Kerberos Key Distribution Center (KDC) is required. It needs to contain the user name and password you will use to be authenticated to Kerberos.</p>
+<div class="infoboxnote" id="GUID-EAA2758B-3071-4CDA-AEF1-D76F5271E998__GUID-4FC2940F-C2B5-4760-98EC-C22375CB0C22"><p class="notep1">Note:</p><p>A KDC implementation is part of a Kerberos installation and not a part of the JDK.</p>
+</div>
+<p>As with most Kerberos installations, a Kerberos configuration file <code class="codeph">krb5.conf</code> is consulted to determine such things as the default realm and KDC. If you are using a Kerberos implementation that does not include a <code class="codeph">krb5.conf</code> file (such as one from Windows), you will either need to create one or use system properties as described in <a href="kerberos-requirements1.htm#GUID-8B30CD5C-64B6-48DE-9CD5-0E44D3A434A7">Setting Properties to Indicate the Default Realm and KDC</a>.</p>
+</div>
+<div class="sect2"><a id="GUID-8B30CD5C-64B6-48DE-9CD5-0E44D3A434A7" name="GUID-8B30CD5C-64B6-48DE-9CD5-0E44D3A434A7"></a><h2 id="JSSEC-GUID-8B30CD5C-64B6-48DE-9CD5-0E44D3A434A7" class="sect2">Setting Properties to Indicate the Default Realm and KDC</h2>
+<div><p>Typically, the default realm and the KDC for that realm are indicated in the Kerberos <code class="codeph">krb5.conf</code> configuration file. However, if you like, you can instead specify these values by setting the following system properties to indicate the realm and KDC, respectively:</p>
+<pre class="oac_no_warn" dir="ltr">java.security.krb5.realm
+java.security.krb5.kdc</pre>
+<p>If you set one of these properties you must set them both.</p>
+<p>Also note that if you set these properties, then no cross-realm authentication is possible unless a <code class="codeph">krb5.conf</code> file is also provided from which the additional information required for cross-realm authentication may be obtained.</p>
+<p>If you set values for these properties, then they override the default realm and KDC values specified in <code class="codeph">krb5.conf</code> (if such a file is found). The <code class="codeph">krb5.conf</code> file is still consulted if values for items other than the default realm and KDC are needed. If no <code class="codeph">krb5.conf</code> file is found, then the default values used for these items are implementation-specific.</p>
+</div>
+</div>
+<div class="sect2"><a id="GUID-0C6413BA-417B-493D-BC89-F9FB90D5E641" name="GUID-0C6413BA-417B-493D-BC89-F9FB90D5E641"></a><h2 id="JSSEC-GUID-0C6413BA-417B-493D-BC89-F9FB90D5E641" class="sect2">Locating the krb5.conf Configuration File</h2>
+<div><p>The essential Kerberos configuration information is the default realm and the default KDC. As shown in <a href="kerberos-requirements1.htm#GUID-8B30CD5C-64B6-48DE-9CD5-0E44D3A434A7">Setting Properties to Indicate the Default Realm and KDC</a>, if you set properties to indicate these values, they are not obtained from a <code class="codeph">krb5.conf</code> configuration file.</p>
+<p>If these properties do not have values set, or if other Kerberos configuration information is needed, an attempt is made to find the required information in a <code class="codeph">krb5.conf</code> file. The algorithm to locate the <code class="codeph">krb5.conf</code> file is the following:</p>
+<ul style="list-style-type: disc;"><li><p>If the system property <code class="codeph">java.security.krb5.conf</code> is set, its value is assumed to specify the path and file name.</p>
+</li>
+<li><p>If that system property value is not set, then the configuration file is looked for in the directory</p>
+<ul style="list-style-type: disc;"><li><code class="codeph"><span class="variable">&lt;java-home&gt;</span>\conf\security</code> (Windows)</li>
+<li><code class="codeph"><span class="variable">&lt;java-home&gt;</span>/conf/security</code> (Solaris, Linux, and macOS)</li>
+</ul>
+<p>Here <code class="codeph"><span class="variable">&lt;java-home&gt;</span></code> refers to the directory where the JDK is installed.</p>
+</li>
+<li><p>If the file is still not found, then an attempt is made to locate it as follows:</p>
+<ul style="list-style-type: disc;"><li><code class="codeph">/etc/krb5/krb5.conf</code> (Solaris)</li>
+<li><code class="codeph">C:\Windows\krb5.ini</code> (Windows)</li>
+<li><code class="codeph">/etc/krb5.conf</code> (Linux)</li>
+<li><code>~/Library/Preferences/edu.mit.Kerberos</code>, <code>/Library/Preferences/edu.mit.Kerberos</code>, or <code>/etc/krb5.conf</code> (macOS)</li>
+</ul>
+</li>
+<li><p>If the file is still not found, and the configuration information being searched for is <span class="variable">not</span> the default realm and KDC, then implementation-specific defaults are used. If, on the other hand, the configuration information being searched for is the default realm and KDC because they weren't specified in system properties, and the <code class="codeph">krb5.conf</code> file is not found either, then an exception is thrown.</p>
+</li>
+<li><p>On Windows, if a <code>krb5.conf</code> file cannot be found or it does not contain settings for the default realm and its KDC, then the environment variables <code class="codeph">USERDNSDOMAIN</code> and <code class="codeph">LOGONSERVER</code> are used as the default realm and its KDC.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2"><a id="GUID-E73CCEA1-E94F-4E8D-9C42-403AF825658A" name="GUID-E73CCEA1-E94F-4E8D-9C42-403AF825658A"></a><h2 id="JSSEC-GUID-E73CCEA1-E94F-4E8D-9C42-403AF825658A" class="sect2">Naming Conventions for Realm Names and Hostnames</h2>
+<div><p> By convention, all Kerberos realm names are uppercase and all DNS hostname and domain names are lowercase. On Windows, domains are also Kerberos realms; however, the realm name is always the uppercase version of the domain name. </p>
+<p>Hostnames are case insensitive and by convention they are all lowercase. They must resolve to the same hostname on the client and server by their respective naming services.</p>
+<p>However, in the Kerberos database hostnames are case sensitive. In all host-based Kerberos service principals in the KDC, hostnames are case-sensitive. The hostnames used in the Kerberos service principal names must exactly match the hostnames returned by the naming service. For example, if the naming service returns a fully qualified lowercased DNS hostname, such as <code class="codeph">raven.example.com</code>, then the administrator must use the same fully qualified lowercased DNS hostname when creating host-based principal names in the KDC: <code class="codeph">host/raven.example.com</code>.</p>
+</div>
+</div>
+<div class="sect2"><a id="GUID-9D76C533-8EF4-4417-884A-37C60FA233FC" name="GUID-9D76C533-8EF4-4417-884A-37C60FA233FC"></a><h2 id="JSSEC-GUID-9D76C533-8EF4-4417-884A-37C60FA233FC" class="sect2">Cross-Realm Authentication</h2>
+<div><p> In cross-realm authentication, a principal in one realm can authenticate to principals in another realm. </p>
+<p>In Kerberos, cross-realm authentication is implemented by sharing an encryption key between two realms. The KDCs in two different realms share a special cross-realm secret; this secret is used to prove identity when crossing the boundary between realms.</p>
+<p>The key that is shared is the Ticket Granting Service principal's key. Here's a typical Ticket Granting Service principal for a single realm:</p>
+<pre class="oac_no_warn" dir="ltr">ktbtgt/EXAMPLE.COM@EXAMPLE.COM
+</pre>
+<p>In cross realm authentication, two principals are created on each participating realm. For two realms, <code class="codeph">ENG.EAST.EXAMPLE.COM</code> and <code class="codeph">SALES.WEST.EXAMPLE.COM</code>, these principals would be: </p>
+<pre class="oac_no_warn" dir="ltr">krbtgt/ENG.EAST.EXAMPLE.COM@SALES.WEST.EXAMPLE.COM
+krbtgt/SALES.WEST.EXAMPLE.COM@ENG.EAST.EXAMPLE.COM
+</pre>
+<p>These principals, known as remote Ticket Granting Server principals, must be created on both realms. </p>
+<p>For a Windows KDC, the <code class="codeph">krbtgt</code> account is created automatically when a Windows domain is created. This account cannot be deleted and renamed.</p>
+</div>
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="more-things-you-can-do-java-gss-api-and-jaas.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="troubleshooting.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>

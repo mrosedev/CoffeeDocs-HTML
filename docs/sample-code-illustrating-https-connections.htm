@@ -1,0 +1,263 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Sample Code Illustrating HTTPS Connections" />
+<meta name="abstract" content="" />
+<meta name="description" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-54F1F19F-0F93-4877-A4A1-46ACD03FD7CB" />
+<meta name="DC.Language" content="en-US" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Sample Code Illustrating HTTPS Connections</title>
+
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="Sample Code Illustrating HTTPS Connections&#xA;" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="sample-code-illustrating-secure-socket-connection-client-and-server.htm" title="Previous" type="text/html" />
+<link rel="next" href="sample-code-illustrating-secure-rmi-connection.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="sample-code-illustrating-secure-rmi-connection.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><a id="GUID-54F1F19F-0F93-4877-A4A1-46ACD03FD7CB" name="GUID-54F1F19F-0F93-4877-A4A1-46ACD03FD7CB"></a><!-- End Header -->
+<h1 id="JSSEC-GUID-54F1F19F-0F93-4877-A4A1-46ACD03FD7CB" class="sect1">Sample Code Illustrating HTTPS Connections</h1>
+<div><p></p>
+<p>There are two primary APIs for accessing secure communications through JSSE. One way is through a socket-level API that can be used for arbitrary secure communications, as illustrated by the <a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm#GUID-AA1C27A1-2CA8-4309-B281-D6199F60E666__SSLSOCKETCLIENT.JAVA-32CFECE1"><code>SSLSocketClient.java</code></a>, <a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm#GUID-B9103D0C-3E6A-4301-B558-461E4CB23DC9__SSLSOCKETCLIENTWITHTUNNELING.JAVA-32D03DB5"><code>SSLSocketClientWithTunneling.java</code></a>, and <a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm#GUID-756AE510-E1BF-42FE-92FC-B9BE3EC31C7B__SSLSOCKETCLIENTWITHCLIENTAUTH.JAVA-32D0CA6C"><code>SSLSocketClientWithClientAuth.java</code></a> examples (with and without the examples described in <a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm#GUID-3561ED02-174C-4E65-8BB1-5995E9B7282C">Running ClassFileServer</a>).</p>
+<p>A second, and often simpler, way is through the standard Java URL API. You can communicate securely with an SSL-enabled web server by using the HTTPS URL protocol or scheme using the <a href="https://docs.oracle.com/javase/10/docs/api/java/net/URL.html" target="_blank"><span class="apiname">java.net.URL</span></a> class.</p>
+<p>Support for HTTPS URL schemes is implemented in many of the common browsers, which allows access to secured communications without requiring the socket-level API provided with JSSE. An example URL is <code class="codeph">https://www.verisign.com</code>.</p>
+<p>The trust and key management for the HTTPS URL implementation is environment-specific. The JSSE implementation provides an HTTPS URL implementation. To use a different HTTPS protocol implementation, set the <code class="codeph">java.protocol.handler.pkgs</code> system property; see <a href="java-secure-socket-extension-jsse-reference-guide.htm#GUID-460C3E5A-A373-4742-9E84-EB42A7A3C363">How to Specify a java.lang.System Property</a>.</p>
+</div>
+<div class="sect2"><a id="GUID-BC38D378-DF50-4B41-8489-67B6AB621FAB" name="GUID-BC38D378-DF50-4B41-8489-67B6AB621FAB"></a><h2 id="JSSEC-GUID-BC38D378-DF50-4B41-8489-67B6AB621FAB" class="sect2">Running URLReader</h2>
+<div><p></p>
+<p>The example <a href="sample-code-illustrating-https-connections.htm#GUID-BC38D378-DF50-4B41-8489-67B6AB621FAB__URLREADER.JAVA-33086510"><code>URLReader.java</code></a> illustrates using a URL to access resources on a secure site. By default, this example connects to <code class="codeph">www.verisign.com</code>, but it can be adapted to connect to <a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm#GUID-3561ED02-174C-4E65-8BB1-5995E9B7282C__CLASSFILESERVER.JAVA-3314B74B"><code>ClassFileServer.java</code></a>. To do so, the URL will need to be modified to point to the correct address. You may also need to update the server's certificate or provide a custom <span class="apiname">HostNameVerifier</span> (see <a href="https://docs.oracle.com/javase/10/docs/api/javax/net/ssl/HttpsURLConnection.html" target="_blank"><span class="apiname">HttpsURLConnection</span></a>) if the hostname in the server's certificate doesn't match the URL's hostname.</p>
+<div class="infoboxnote" id="GUID-BC38D378-DF50-4B41-8489-67B6AB621FAB__GUID-19BA7A7B-2800-429C-A1F8-9536E5D75382"><p class="notep1">Note:</p>If you are behind a firewall, you may need to set the <code class="codeph">https.proxyHost</code> and <code class="codeph">https.proxyPort</code> system properties to correctly specify the proxy.</div>
+<div class="section"><p class="subhead2">Usage</p><pre class="oac_no_warn" dir="ltr">java URLReader</pre>
+</div>
+<!-- class="section" -->
+<div class="section" id="GUID-BC38D378-DF50-4B41-8489-67B6AB621FAB__URLREADER.JAVA-33086510"><p class="subhead2">URLReader.java</p><pre class="oac_no_warn" dir="ltr">import java.net.*;
+import java.io.*;
+
+/*
+ * This example illustrates using a URL to access resources
+ * on a secure site.
+ *
+ * If you are running inside a firewall, please also set the following
+ * Java system properties to the appropriate value:
+ *
+ *   https.proxyHost = &lt;secure proxy server hostname&gt;
+ *   https.proxyPort = &lt;secure proxy server port&gt;
+ *
+ */
+
+public class URLReader {
+    public static void main(String[] args) throws Exception {
+        URL verisign = new URL("https://www.verisign.com/");
+        BufferedReader in = new BufferedReader(
+                                new InputStreamReader(
+                                verisign.openStream()));
+
+        String inputLine;
+
+        while ((inputLine = in.readLine()) != null)
+            System.out.println(inputLine);
+
+        in.close();
+    }
+}</pre>
+</div>
+<!-- class="section" -->
+</div>
+</div>
+<div class="sect2"><a id="GUID-20E68036-A8A2-4297-8074-44D076845E00" name="GUID-20E68036-A8A2-4297-8074-44D076845E00"></a><h2 id="JSSEC-GUID-20E68036-A8A2-4297-8074-44D076845E00" class="sect2">Running URLReaderWithOptions</h2>
+<div><p></p>
+<p>The example is very similar to <a href="sample-code-illustrating-https-connections.htm#GUID-BC38D378-DF50-4B41-8489-67B6AB621FAB__URLREADER.JAVA-33086510"><code>URLReaader.java</code></a>, but it enables you to set the system properties through main method arguments rather than as <code class="codeph">-D</code> options to the Java runtime environment.</p>
+<div class="section"><p class="subhead2">Usage</p><p><code class="codeph">java URLReaderWithOptions [-h <span class="variable">proxyhost</span>] [-p <span class="variable">proxyport</span>] [-k <span class="variable">protocolhandlerpkgs</span>] [-c <span class="variable">ciphersarray</span>]</code></p>
+<ul style="list-style-type: disc;"><li><code class="codeph"><span class="variable">proxyHost</span></code>: secure proxy server hostname (<code class="codeph">https.proxyHost</code>)</li>
+<li><code class="codeph"><span class="variable">proxyPort</span></code>: secure proxy server port (<code class="codeph">https.proxyPort</code>)</li>
+<li><code class="codeph"><span class="variable">protocolhandlerpkgs</span></code>: a pipe-separated (<code class="codeph">|</code>) list of protocol handlers (<code class="codeph">java.protocol.handler.pkgs</code>)</li>
+<li><code class="codeph"><span class="variable">ciphersarray</span></code>: enabled cipher suites as a comma-separated list (<code class="codeph">https.cipherSuites</code>)</li>
+</ul>
+<div class="infoboxnote" id="GUID-20E68036-A8A2-4297-8074-44D076845E00__GUID-91B04C04-7256-438A-8976-CFF5EC570A16"><p class="notep1">Note:</p>Multiple protocol handlers can be included in the <code class="codeph"><span class="variable">protocolhandlerpkgs</span></code> argument as a list with items separated by vertical bars. Multiple SSL cipher suite names can be included in the <code class="codeph"><span class="variable">ciphersarray</span></code> argument as a list with items separated by commas. The possible cipher suite names are the same as those returned by the <code class="codeph">SSLSocket.getSupportedCipherSuites()</code> method. The suite names are taken from the SSL and TLS protocol specifications.</div>
+<p>You need a <code class="codeph"><span class="variable">protocolhandlerpkgs</span></code> argument only if you want to use an HTTPS protocol handler implementation other than the default one provided by Oracle.</p>
+<p>If you are running the sample code behind a firewall, then you must include arguments for the proxy host and the proxy port. Additionally, you can include a list of cipher suites to enable.</p>
+<p>Here is an example of running <code class="codeph">URLReaderWithOptions</code> and specifying the proxy host "webproxy" on port 8080:</p>
+<pre class="codeblock" dir="ltr">java URLReaderWithOptions -h webproxy -p 8080
+</pre>
+</div>
+<!-- class="section" -->
+<div class="section" id="GUID-20E68036-A8A2-4297-8074-44D076845E00__URLREADERWITHOPTIONS.JAVA-3315CF43"><p class="subhead2">URLReaderWithOptions.java</p><pre class="oac_no_warn" dir="ltr">import java.net.*;
+import java.io.*;
+
+/*
+ * Using a URL to access resources on a secure site.
+ *
+ * You can optionally set the following command line options:
+ *
+ *     -h &lt;secure proxy server hostname&gt;
+ *     -p &lt;secure proxy server port&gt;
+ *     -k &lt;| separated list of protocol handlers&gt;
+ *     -c &lt;enabled cipher suites as a comma separated list&gt;
+ *
+ */
+
+public class URLReaderWithOptions {
+    public static void main(String[] args) throws Exception {
+
+        System.out.println("USAGE: java URLReaderWithOptions " +
+            "[-h proxyhost] [-p proxyport] [-k protocolhandlerpkgs] " +
+            "[-c ciphersarray]");
+
+        // initialize system properties
+        char option = 'd';
+        for (int i = 0; i &lt; args.length; i++) {
+            System.out.println(option+": "+args[i]);
+            switch(option) {
+            case 'h':
+                System.setProperty("https.proxyHost", args[i]);
+                option = 'd';
+                break;
+            case 'p':
+                System.setProperty("https.proxyPort", args[i]);
+                option = 'd';
+                break;
+            case 'k':
+                System.setProperty("java.protocol.handler.pkgs", args[i]);
+                option = 'd';
+                break;
+            case 'c':
+                System.setProperty("https.cipherSuites", args[i]);
+                option = 'd';
+                break;
+            default:
+                // get the next option
+                if (args[i].startsWith("-")) {
+                    option = args[i].charAt(1);
+                }
+            }
+        }
+
+        URL verisign = new URL("https://www.verisign.com/");
+        BufferedReader in = new BufferedReader(
+                                new InputStreamReader(
+                                verisign.openStream()));
+
+        String inputLine;
+
+        while ((inputLine = in.readLine()) != null)
+            System.out.println(inputLine);
+
+        in.close();
+    }
+}</pre>
+</div>
+<!-- class="section" -->
+</div>
+</div>
+</div><!-- class="ind" --><!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="sample-code-illustrating-secure-socket-connection-client-and-server.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="sample-code-illustrating-secure-rmi-connection.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>
