@@ -1,0 +1,186 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="description" content="This guide helps you to understand the Java security technology, tools, and implementations of commonly used security algorithms, mechanisms, and protocols on the Java Platform, Standard Edition (Java SE)." />
+<title>Java Platform, Standard Edition Security Developer&#8217;s Guide, Release 11</title>
+<meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+<meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+<meta name="brand" content="DARB" />
+<meta name="doctitle" content="Java Platform, Standard Edition Security Developer&#8217;s Guide, Release 11" />
+<meta name="date" content="2018-04-19T11:46:47Z" />
+<meta name="robots" content="noarchive" />
+<meta name="relnum" content="Release 11" />
+<meta name="partnum" content="E94828-01" />
+<meta name="docid" content="JSSEC" />
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="stylesheet" href="../../dcommon/css/blafdoc.css" title="Oracle BLAFDoc" type="text/css" />
+<script type="application/javascript" src="../../dcommon/js/ohc-videos.js"></script>
+
+<link rel="contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="prev" href="toc.htm" title="Previous" type="text/html" />
+<link rel="next" href="preface.htm" title="Next" type="text/html" />
+</head>
+<body>
+<div class="header"><a id="top" name="top"></a>
+<div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top"><b>Java Platform, Standard Edition Security Developer&#8217;s Guide</b><br />
+<b>
+<span>Release 11</span> 
+</b><br />
+E94828-01
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td> </td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="toc.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="preface.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div><!-- class="header" -->
+<div class="ind"><!-- End Header -->
+<h1 class="docinfo">Java Platform, Standard Edition</h1>
+<p class="booktitle">Security Developer&#8217;s Guide</p>
+<p><span class="revnumber">Release 11</span> </p>
+<p class="invpartnumber">E94828-01</p>
+<p class="date">September 2018</p>
+<div><p>This guide helps you to understand the Java security technology, tools, and implementations of commonly used security algorithms, mechanisms, and protocols on the Java Platform, Standard Edition (Java SE).</p>
+</div>
+<a id="sthref1" name="sthref1"></a>
+<hr />
+<p>Java Platform, Standard Edition Security Developer&#8217;s Guide, <span>Release 11</span> 
+</p><p>E94828-01</p>
+<p>Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</p>
+<div><p>This software and related documentation are provided under a license
+            agreement containing restrictions on use and disclosure and are protected by
+            intellectual property laws. Except as expressly permitted in your license agreement or
+            allowed by law, you may not use, copy, reproduce, translate, broadcast, modify, license,
+            transmit, distribute, exhibit, perform, publish, or display any part, in any form, or by
+            any means. Reverse engineering, disassembly, or decompilation of this software, unless
+            required by law for interoperability, is prohibited.</p>
+<p>The information contained herein is subject to change without notice
+            and is not warranted to be error-free. If you find any errors, please report them to us
+            in writing.</p>
+</div>
+<div><p>If this is software or related documentation that is delivered to the
+            U.S. Government or anyone licensing it on behalf of the U.S. Government, then the
+            following notice is applicable:</p>
+<p>U.S. GOVERNMENT END USERS: Oracle programs, including any operating
+            system, integrated software, any programs installed on the hardware, and/or
+            documentation, delivered to U.S. Government end users are "commercial computer software"
+            pursuant to the applicable Federal Acquisition Regulation and agency-specific
+            supplemental regulations. As such, use, duplication, disclosure, modification, and
+            adaptation of the programs, including any operating system, integrated software, any
+            programs installed on the hardware, and/or documentation, shall be subject to license
+            terms and license restrictions applicable to the programs. No other rights are granted
+            to the U.S. Government.</p>
+</div>
+<div><p>This software or hardware is developed for general use in a variety of
+            information management applications. It is not developed or intended for use in any
+            inherently dangerous applications, including applications that may create a risk of
+            personal injury. If you use this software or hardware in dangerous applications, then
+            you shall be responsible to take all appropriate fail-safe, backup, redundancy, and
+            other measures to ensure its safe use. Oracle Corporation and its affiliates disclaim
+            any liability for any damages caused by use of this software or hardware in dangerous
+            applications.</p>
+</div>
+<div><p>Oracle and Java are registered trademarks of Oracle and/or its
+            affiliates. Other names may be trademarks of their respective owners.</p>
+<p>Intel and Intel Xeon are trademarks or registered trademarks of Intel
+            Corporation. All SPARC trademarks are used under license and are trademarks or
+            registered trademarks of SPARC International, Inc. AMD, Opteron, the AMD logo, and the
+            AMD Opteron logo are trademarks or registered trademarks of Advanced Micro Devices. UNIX
+            is a registered trademark of The Open Group.</p>
+</div>
+<div><p>This software or hardware and documentation may provide access to or
+            information about content, products, and services from third parties. Oracle Corporation
+            and its affiliates are not responsible for and expressly disclaim all warranties of any
+            kind with respect to third-party content, products, and services unless otherwise set
+            forth in an applicable agreement between you and Oracle. Oracle Corporation and its
+            affiliates will not be responsible for any loss, costs, or damages incurred due to your
+            access to or use of third-party content, products, or services, except as set forth in
+            an applicable agreement between you and Oracle.</p>
+</div>
+</div><!-- class="ind" -->
+<!-- Start Footer -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td valign="bottom">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100">
+<tr>
+<td align="center">
+<a href="toc.htm">
+<img src="../../dcommon/gifs/leftnav.gif" alt="Previous" /><br />
+<span class="icon">Previous</span>
+</a>
+</td>
+<td align="center">
+<a href="preface.htm">
+<img src="../../dcommon/gifs/rightnav.gif" alt="Next" /><br />
+<span class="icon">Next</span>
+</a>
+</td>
+<td> </td>
+</tr>
+</table>
+</td>
+<td class="copyrightlogo">
+<img class="copyrightlogo" src="../../dcommon/gifs/oracle.gif" alt="Oracle Logo" />
+<a href="../../dcommon/html/cpyr.htm"><br />
+<span class="copyrightlogo">Copyright&nbsp;&copy;&nbsp;1993, 2018, Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span></a>
+</td>
+<td valign="bottom" align="right">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="225">
+<tr>
+<td>
+ 
+</td>
+<td align="center" valign="top">
+<a href="toc.htm"><img src="../../dcommon/gifs/toc.gif" alt="Go To Table Of Contents" /><br />
+<span class="icon">Contents</span></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- class="footer" -->
+</body>
+</html>
