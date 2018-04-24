@@ -1,2 +1,2 @@
-# CoffeeDocs-Hugo
-Using Hugo to generate the CoffeeDoc book
+# CoffeeDocs-HTML
+Using HTML sources to generate the CoffeeDoc book
